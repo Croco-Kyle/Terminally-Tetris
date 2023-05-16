@@ -1,4 +1,7 @@
-#include <Vector>
+#include <iostream>
+#include <vector>
+
+
 // The tetris game board represented by a vector of vectors.
 
 struct Board{
@@ -17,4 +20,20 @@ struct Board{
             map.push_back(row); 
         }
     }
+    // prints the board to the console.
+    void printBoard(){
+        std::string board = "";
+        for (int i = 0; i < height; i++){
+            board += "|";
+            for (int j = 0; j < width; j++){
+                board += map[i][j];
+            }
+            board += "|\n";
+        }
+    std::cout << board;
+    }
+    // checks if the piece can be placed on the board.
+
+
 };
+
