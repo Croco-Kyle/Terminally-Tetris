@@ -1,39 +1,42 @@
 #include <iostream>
 #include <vector>
+#include "Board.h"
 
-
-// The tetris game board represented by a vector of vectors.
-
-struct Board{
-    int mode = 0;
-    int width;
-    int height;
-
-    std::vector<std::vector<std::string>> map;
-    // creates the board depending on how large we want our board.
-    // this allows us to fix any board errors we might encounter.
-    Board(int width, int height){
-        this->width = width;
-        this->height = height;
-        for (int i = 0; i < height){
-            std::vector<std::string> row(width," ");
-            map.push_back(row); 
-        }
+// There are 10 different squares in a line. 
+// If 
+// Before we add a piece we need to check if the board is valid
+Board::Board(int width, int height){
+    this->width = width;
+    this->height = height;
+    for (int i = 0; i < height; i++){
+        std::vector<std::string> row(width," ");
+        map.push_back(row); 
     }
-    // prints the board to the console.
-    void printBoard(){
-        std::string board = "";
+    // The idea is that we will check the next line below the current piece.
+    // If the next line is empty then we can move the piece down.
+    // If the next line is not empty then we can't move the piece down.
+    // and if the piece is already at the bottom then we can't move the piece down.
+    bool Board::check_line(width, x,y){
         for (int i = 0; i < height; i++){
-            board += "|";
+            int count = 0;
             for (int j = 0; j < width; j++){
-                board += map[i][j];
+                if (map[i][j] != " "){
+                    count++;
+                }
             }
-            board += "|\n";
+            if (count == width){
+                return i;
+            }
         }
-    std::cout << board;
+        return ;
     }
-    // checks if the piece can be placed on the board.
-
-
 };
 
+// Testing the board class.
+int main(){
+    Board board(100,200); // creates a board of size 100x200. The tetris board is
+    // is usually 10 x 20 squares.
+    std::cout << board.getBoard();
+
+    return 0;
+}
