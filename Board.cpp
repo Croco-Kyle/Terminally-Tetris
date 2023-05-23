@@ -16,7 +16,7 @@ Board::Board(int width, int height){
     // If the next line is empty then we can move the piece down.
     // If the next line is not empty then we can't move the piece down.
     // and if the piece is already at the bottom then we can't move the piece down.
-    bool Board::check_line(width, x,y){
+    bool Board::check_map(width, x,y){
         for (int i = 0; i < height; i++){
             int count = 0;
             for (int j = 0; j < width; j++){
@@ -30,6 +30,27 @@ Board::Board(int width, int height){
         }
         return ;
     }
+    
+    // This function checks if a line is complete and then deletes it and updates the score/level.
+    void Board::check_line(){
+        for (int i = 0; i < height; i++){
+            int count = 0;
+            for (int j = 0; j < width; j++){
+                if (map[i][j] != " "){
+                    count++;
+                }
+            }
+            if (count == width){
+                map.erase(map.begin()+i);
+                std::vector<std::string> row(width," ");
+                map.insert(map.begin(),row);
+            }
+        }
+    }
+    // q: What graphical interface should I use?
+    // a: You can use the ncurses library.
+    // q: What is the ncurses library?
+
 };
 
 // Testing the board class.
