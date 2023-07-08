@@ -1,23 +1,22 @@
-SOURCES = Board.cpp Board.h
 CPPC = g++
+# -g  	- this flag adds debugging information to the executable file
+# -wall - this flag is used to turn on most compiler warnings
+# o2 	- this flag is used to turn on optimization
+# Macro for the compiler flags 
 CPPFLAGS = -c -Wall -o2
-LDLIBS = -pthread
-OBJECTS = $(SOURCES:.cpp=.o)
-TARGET = Board
+# Macro for the object files
+OBJS = pieces.o board.o
+LDLIBS = -pthread -lncurses
 
-all: $(TARGET)
+# *******************************************************************
+# Targets to bring the executable up to date
+all: main 
 
-Board.o: Board.h
+main: main.o $(OBJS)
+	$(CPPC) main.o $(OBJS) $(LDLIBS) -o main
 
-%.o: %.c
-$(OBJECTS): Makefile
+board.o: board.cpp
+pieces.o: pieces.cpp
 
-.cpp.o:
-	$(CPPC) $(CPPFLAGS) $< -o $@$
-
-$(TARGET): $(OBJECTS)
-	$(CPPC) -o $@ $(OBJECTS) $(LDLIBS)
-
-.PHONY: clean
 clean:
-	rm -f *~ *.o $(TARGET)
+	rm -f *~ *.o main
