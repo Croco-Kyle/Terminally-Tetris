@@ -33,7 +33,7 @@ int main(){
     noecho();               // disables echo
 
     // print the board to the virtual screen
-    printw( ,board.getBoard().c_str()); // prints the board to the virtual screen.
+    printw(board.getBoard().c_str()); // prints the board to the virtual screen.
     refresh();              // prints it to the real screen
     // Do keypad(stdscr, TRUE); to enable the keypad.
     getch();                // wait for user input

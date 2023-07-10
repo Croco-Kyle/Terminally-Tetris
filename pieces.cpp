@@ -1,20 +1,21 @@
+#include "coords.h"
 #include <vector>
 #include <string>
 
-// class representing the individual board game pieces
+// class representing the individual pieces in tetris.
 // There are 7 different pieces in tetris. Square, Line, T, L (left and right), and Z (left and right).
-struct Piece{    
-    int w[2];
-    int x[2];
-    int y[2];
-    int z[2];
 
-    // constructor for the piece class.
-    Piece(int w[2], int x[2], int y[2], int z[2]){
-        this->w = w;
-        this->x = x;
-        this->y = y;
-        this->z = z;
+class Piece{
+    int mode;       // 0 = square, 1 = line, 2 = T, 3 = LL, 4 = LR, 5 = ZL, 6 = ZR
+    int row = 0;    // staring row = 0
+    int col;        // starting col to be input. This will be left most corner of the piece.
+
+    class Piece(int mode, int col){
+        this->mode = mode;
+        this->col = col;
+        
     }
-    
+
+
+
 };
