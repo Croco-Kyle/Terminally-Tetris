@@ -4,6 +4,7 @@
 #include "pieces.cpp"
 #include <ncurses.h>
 #include <unistd.h>
+#include <chrono>
 using namespace std;
 
 /*
@@ -21,7 +22,9 @@ The gameplay loop is as follows:
 11. If the speed is updated, the game continues.
 12. If the game continues, the player gets a new piece.
 */ 
+void gameLoop(){
 
+}
 
 int main(){
     int row = 100;

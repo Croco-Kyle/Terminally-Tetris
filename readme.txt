@@ -12,3 +12,9 @@ The individual components will be:
 --Start Screen
 --Pause Screen
 --Exit Screen 
+
+Todo List:
+- Implement game clock to control pieces moving down the board.
+- piece rotatiom
+- valid move function
+- Piece creation.
