@@ -1,4 +1,3 @@
-#include <iostream>
 #include <vector>
 #include <string>
 
@@ -7,10 +6,11 @@ struct Board{
     int mode = 0;
     int width;
     int height;
-    std::vector<std::vector<std::string>> map;
+    std::vector<std::vector<std::string>> map = {};
     // creates the board depending on how large we want our board.
     // this allows us to fix any board errors we might encounter.
-    Board(int width, int height){
+    Board():Board(10,20){};   // default board size is 100x200
+    Board(int width, int height){   // user defined board size.
         this->width = width;
         this->height = height;
         for (int i = 0; i < height; i++){

@@ -3,8 +3,7 @@
 #include "board.cpp"   
 #include "pieces.cpp"
 #include <ncurses.h>
-#include <unistd.h>
-#include <chrono>
+
 using namespace std;
 
 /*
@@ -27,9 +26,7 @@ void gameLoop(){
 }
 
 int main(){
-    int row = 100;
-    int col = 200;
-    Board board(row, col);
+    
     initscr();              // initializes the screen, and sets up memory and clears the screen
     raw();                  // disables line buffering
     keypad(stdscr, TRUE);   // enables the keypad
