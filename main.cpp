@@ -2,7 +2,7 @@
 #include <iostream>
 #include "board.cpp"   
 #include "pieces.cpp"
-#include <ncurses.h>
+#include "ncurses.h"
 
 using namespace std;
 
@@ -26,19 +26,21 @@ void gameLoop(){
 }
 
 int main(){
-    
+    Board board(200,100);
     initscr();              // initializes the screen, and sets up memory and clears the screen
     raw();                  // disables line buffering
     keypad(stdscr, TRUE);   // enables the keypad
     noecho();               // disables echo
+
     WINDOW * win = newwin(102,202,1,1); // creates a new window
+    box(win,0,0);           // creates a box around the window
     refresh();              // refreshes the screen
     char sides = '|';       // waits for user input
-    char top = "_";
+    char top = '_';
 
     box(win, (int)sides, (int)top);   // creates a box around the window
     // print the board to the virtual screen
-    mvprint(win, 1,1, board.getBoard().c_str()); // prints the board to the virtual screen.
+    mvprintw(1,1,board.getBoard().c_str()); // prints the board to the virtual screen.
     refresh();              // prints it to the real screen
     // Do keypad(stdscr, TRUE); to enable the keypad.
     getch();                // wait for user input

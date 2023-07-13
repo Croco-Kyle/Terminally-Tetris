@@ -2,14 +2,16 @@
 #include <string>
 
 
-struct Board{
+class Board{
     int mode = 0;
     int width;
     int height;
     std::vector<std::vector<std::string>> map = {};
     // creates the board depending on how large we want our board.
     // this allows us to fix any board errors we might encounter.
-    Board():Board(10,20){};   // default board size is 100x200
+    public:
+    Board():Board(10,20){}   // default board size is 100x200
+
     Board(int width, int height){   // user defined board size.
         this->width = width;
         this->height = height;
@@ -19,30 +21,28 @@ struct Board{
         }
     }
     // This function checks if a line is complete and then deletes it and updates the score/level.
-    void check_line(){
-        for (int i = 0; i < height; i++){
-            int count = 0;
-            for (int j = 0; j < width; j++){
-                if (map[i][j] != " "){
-                    count++;
-                }
-            }
-            if (count == width){
-                map.erase(map.begin()+i);
-                std::vector<std::string> row(width," ");
-                map.insert(map.begin(),row);
-            }
-        }
-    }
+    // void check_line(){
+    //     for (int i = 0; i < height; i++){
+    //         int count = 0;
+    //         for (int j = 0; j < width; j++){
+    //             if (map[i][j] != " "){
+    //                 count++;
+    //             }
+    //         }
+    //         if (count == width){
+    //             map.erase(map.begin()+i);
+    //             std::vector<std::string> row(width," ");
+    //             map.insert(map.begin(),row);
+    //         }
+    //     }
+    // }
     // Gets the board string.
     std::string getBoard(){
         std::string board ="";
         for (int i = 0; i < height; i++){ // traversing rows
-            board += "|";
             for (int j = 0; j < width; j++){
                 board += map[i][j];
             }
-            board += "|\n";
         }
             return board;
     }

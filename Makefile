@@ -16,7 +16,7 @@ main: main.o $(OBJS)
 	$(CPPC) main.o $(OBJS) $(LDLIBS) -o main
 
 board.o: board.cpp
-pieces.o: pieces.cpp
+pieces.o: pieces.cpp coords.h
 
 clean:
 	rm -f *~ *.o main
