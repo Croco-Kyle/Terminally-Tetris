@@ -2,7 +2,7 @@
 #include <iostream>
 #include "board.cpp"   
 #include "pieces.cpp"
-#include "ncurses.h"
+#include <ncurses.h>
 
 using namespace std;
 
