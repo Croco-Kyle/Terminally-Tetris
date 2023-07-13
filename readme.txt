@@ -16,5 +16,5 @@ The individual components will be:
 Todo List:
 - Implement game clock to control pieces moving down the board.
 - piece rotatiom
-- valid move function
-- Piece creation.
+- valid move function. rotation could return potential coords. if coords are 
+    accessible then the game would approve the move and update the piece.
